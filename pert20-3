@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int n, int key) {
+    int low = 0, high = n - 1, langkah = 0;
+
+    while(low <= high) {
+        langkah++;
+        int mid = (low + high) / 2;
+
+        if(arr[mid] == key) {
+            cout << "Ditemukan dalam " << langkah << " langkah\n";
+            return mid;
+        }
+        else if(arr[mid] < key)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    cout << "Tidak ditemukan, langkah: " << langkah << endl;
+    return -1;
+}
+
+int main() {
+    int data[15] = {2,5,8,10,14,18,20,25,30,35,40,45,50,55,60};
+    int cari = 25;
+    binarySearch(data, 15, cari);
+}
